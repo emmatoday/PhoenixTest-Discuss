@@ -19,7 +19,7 @@ spec:
           secretName: prod-secret-exs
       containers:
       - name: discuss-dev
-        image: us.gcr.io/emma-today/discuss:0.0.20
+        image: us.gcr.io/emma-today/discuss:0.0.21
         imagePullPolicy: Always
         env:
         - name: PORT
