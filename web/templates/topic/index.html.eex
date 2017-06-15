@@ -1,0 +1,32 @@
+<h5 class="main-title">Topics</h5>
+<%= for topic <- @topics do %>
+<div class="row topic-item">
+  <div class="card">
+    <div class="id-number left card-content blue white-text">
+      <%= topic.id %>
+    </div>
+    <div class="card-content">
+      <%= if @conn.assigns.user && @conn.assigns.user.id == topic.user_id do %>
+        <div class="right">
+          <%= link to: topic_path(@conn, :edit, topic), \
+                   class: "waves-effect waves-light btn-small" do %>
+            <i class="material-icons">mode_edit</i>
+          <% end %> &nbsp;
+          <%= link to: topic_path(@conn, :delete, topic), method: :delete, \
+                   class: "waves-effect waves-light btn-small" do %>
+            <i class="material-icons">delete</i>
+          <% end %>
+        </div>
+      <% end %>
+      <%= link topic.title, to: topic_path(@conn, :show, topic) %>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<div class="fixed-action-btn">
+  <%= link to: topic_path(@conn, :new), \
+           class: "btn-floating btn-large waves-effect waves-light red" do %>
+    <i class="material-icons">add</i>
+  <% end %>
+</div>

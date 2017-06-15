@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: discuss-dev-service
+  labels:
+    app: discuss-dev
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: 4000
+    protocol: TCP
+    name: http
+  selector:
+    app: discuss-dev

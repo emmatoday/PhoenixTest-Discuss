@@ -1,0 +1,68 @@
+/* This file is for your main application css. */
+
+body {
+  background-color: #f7f7f7;
+  padding-bottom: 5rem;
+}
+
+.help-block {
+  color: red;
+  text-transform: capitalize;
+  position: absolute;
+  top: 46px;
+  display: block;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 12px;
+  margin-top: 35px;
+}
+
+.card form {
+  display: inline-block;
+}
+
+p.alert {
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  font-size: 1rem;
+  margin-top: -0.5rem;
+}
+
+p.alert i {
+  display: inline-flex;
+  margin-top: 0.25rem;
+}
+
+nav {
+  margin-bottom: 2rem;
+}
+
+h5.main-title {
+  margin-bottom: 1.5rem;
+}
+
+div.id-number {
+  min-width: 5rem;
+  text-align: center;
+  margin-right: 1rem;
+}
+
+.row.topic-item {
+  margin-bottom: 0;
+}
+
+nav i.account.left {
+  margin-right: 0 !important;
+}
+
+nav i.account.right {
+  margin-left: 0 !important;
+}
+
+nav ul a.dropdown-button.account {
+  padding-left: 33px !important;
+  padding-right: 33px !important;
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Which one of you was curious enough to check out my HTML source? :p -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>TalkToEmma - Hello from Emma!</title>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  </head>
+
+  <body>
+    <ul id="user-menu" class="dropdown-content">
+      <%= if @conn.assigns[:user] do %>
+        <li>
+          <%= link to: auth_path(@conn, :signout) do %>
+            Sign out
+          <% end %>
+        </li>
+      <% else %>
+        <li>
+          <%= link to: auth_path(@conn, :request, :google) do %>
+            ...using Google
+          <% end %>
+        </li>
+        <li>
+          <%= link to: auth_path(@conn, :request, :github) do %>
+            ...using GitHub
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+    <nav class="top-bar light-blue">
+      <div class="nav-wrapper container">
+        <a href="/" class="brand-logo left">
+          TalkToEmma
+        </a>
+        <ul class="right">
+          <li>
+            <a class="dropdown-button account" href="#!" data-activates="user-menu">
+              <%= if @conn.assigns[:user] do %>
+                <i class="material-icons account left">account_circle</i>&nbsp;
+                <i class="material-icons account right">arrow_drop_down</i>
+              <% else %>
+                Sign in...<i class="material-icons account right">arrow_drop_down</i>
+              <% end %>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      <%= if get_flash(@conn, :info) do %>
+        <p class="alert alert-info chip blue lighten-2" role="alert">
+          <%= get_flash(@conn, :info) %>
+        </p>
+      <% end %>
+      <%= if get_flash(@conn, :error) do %></p>
+        <p class="alert alert-danger chip red lighten-2" role="alert">
+          <span class="left">
+            <i class="material-icons">error_outline</i>
+          </span>
+          <%= get_flash(@conn, :error) %>
+        </p>
+      <% end %>
+
+      <main role="main">
+        <%= render @view_module, @view_template, assigns %>
+      </main>
+
+    </div> <!-- /container -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+  </body>
+</html>

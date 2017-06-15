@@ -1,0 +1,10 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: discuss-dev-ingress
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: ingress-dev-static-ip
+spec:
+  backend:
+    serviceName: discuss-dev-service
+    servicePort: 80
